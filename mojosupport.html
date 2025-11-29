@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🇵🇸 ফিলিস্তিনের পাশে মোজো - অফিসিয়াল ক্যাম্পেইন</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* 🎨 গ্লোবাল ডিজাইন (Global Design) */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Hind Siliguri', sans-serif; /* কাস্টম বাংলা ফন্ট */
+            background: #b30304; /* মূল লাল রঙ */
+            color: white; /* সাদা টেক্সট */
+            text-align: center;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* 🚩 অ্যানিমেশন (Keyframes for Animations) */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulseYellow {
+            0% { box-shadow: 0 0 0 0 rgba(255, 204, 0, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 204, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 204, 0, 0); }
+        }
+        
+        @keyframes highlightYellow {
+            0% { color: white; }
+            50% { color: #ffcc00; }
+            100% { color: white; }
+        }
+
+        /* 🖼️ ইমেজ ও লোগো (Images & Logo) */
+        .logo { 
+            padding-top: 20px; 
+            width: 70%; 
+            max-width: 200px; 
+            margin: auto; 
+            animation: fadeIn 1s ease-out;
+        }
+        .main-img { 
+            width: 90%; 
+            max-width: 400px; 
+            margin: 20px auto; 
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        /* 📣 শিরোনাম ও টেক্সট (Headers & Text) */
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-top: 35px;
+            color: #ffcc00; /* সোনালী হলুদ */
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            padding: 0 15px;
+            animation: fadeIn 1.4s ease-out;
+        }
+
+        p {
+            padding: 0 15px;
+            margin-bottom: 20px;
+            animation: fadeIn 1.6s ease-out;
+            color: white;
+        }
+
+        .highlight-text {
+            color: #ffcc00; /* হাইলাইট টেক্সটের জন্য সোনালী হলুদ */
+            font-weight: 700;
+            animation: highlightYellow 3s infinite;
+        }
+
+        /* 🎁 ডোনেশন বাটন (Donate Button) */
+        .donate-btn {
+            background: #ffcc00; /* সোনালী হলুদ */
+            color: #000;
+            padding: 18px 30px; 
+            border-radius: 40px;
+            border: none; 
+            font-size: 18px; 
+            cursor: pointer;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            animation: fadeIn 1.8s ease-out, pulseYellow 2s infinite;
+            margin-bottom: 30px; 
+        }
+
+        .donate-btn:hover {
+            background: #e6b800;
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(255, 204, 0, 0.5);
+        }
+
+        /* 🔗 শেয়ার বাটন (Share Buttons) */
+        .share-text { 
+            font-size: 16px; 
+            margin-top: 15px; 
+            color: white;
+        }
+        .share-buttons { 
+            margin: 20px 0 30px 0; 
+        }
+        .share-btn {
+            background: #fff; 
+            color: #000;
+            padding: 14px 20px; 
+            margin: 5px;
+            border-radius: 30px; 
+            font-size: 15px;
+            text-decoration: none; 
+            display: inline-block;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .share-btn:hover {
+            background: #eee;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 📊 প্রোগ্রেস বার (Progress Bar) */
+        .progress-box {
+            width: 90%; 
+            max-width: 400px;
+            background: #880000;
+            height: 25px;
+            border-radius: 25px; 
+            margin: 15px auto; 
+            overflow: hidden;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        .progress-fill {
+            width: 0%; 
+            height: 100%; 
+            background: #ffcc00; /* সোনালী হলুদ */
+            transition: width 0.5s ease-in-out;
+            border-radius: 25px 0 0 25px;
+        }
+        #shareCountText {
+            font-size: 16px;
+            font-weight: 600;
+            color: #ffcc00;
+            margin-top: -10px;
+        }
+
+        /* ⏳ কাউন্টডাউন বক্স (Countdown Box) */
+        .countdown-box {
+            background: #9a0000; /* গাঢ় লাল */
+            padding: 20px;
+            width: 90%;
+            max-width: 450px;
+            margin: 35px auto;
+            border-radius: 15px;
+            border: 2px solid #ffcc00; /* সোনালী বর্ডার */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
+        .time-text { 
+            font-size: 20px; 
+            margin-bottom: 15px; 
+            font-weight: 700; 
+            color: #ffcc00; 
+            animation: pulseYellow 3s infinite;
+        }
+        #timer {
+            font-size: 28px; 
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 0 5px rgba(0,0,0,0.5);
+            letter-spacing: 1px;
+        }
+        .count-text { 
+            font-size: 15px; 
+            margin-top: 15px;
+            color: white;
+        }
+
+        /* ⬇️ নিচের বাটন (Bottom Buttons) */
+        .bottom-btn {
+            background: #ffcc00; /* সোনালী হলুদ */
+            color: #000;
+            padding: 18px;
+            margin: 10px; 
+            border: none;
+            border-radius: 40px; 
+            width: 85%;
+            max-width: 350px;
+            font-weight: 700; 
+            font-size: 17px; 
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px #e6b800; /* থ্রিডি ইফেক্ট */
+        }
+
+        .bottom-btn:hover {
+            background: #e6b800;
+            transform: translateY(1px);
+            box-shadow: 0 2px #e6b800;
+        }
+
+        /* 팝আপ (Popup) */
+        .popup {
+            position: fixed; top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: none; justify-content: center; align-items: center;
+            z-index: 1000;
+        }
+        .popup-box {
+            background: white; color: #000;
+            padding: 30px; border-radius: 15px;
+            width: 85%; max-width: 400px; text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.3s ease-out;
+        }
+        .popup-box p {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #000; /* নিশ্চিত করার জন্য টেক্সট কালার কালো করা হলো */
+        }
+        .ok-btn {
+            background: #b30304; color: white;
+            padding: 12px 25px; border-radius: 30px;
+            border: none; margin-top: 15px; cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+        .ok-btn:hover {
+            background: #ffcc00;
+            color: #000;
+        }
+
+        /* 🦶 ফুটার (Footer) */
+        footer {
+            background: #9a0000; /* গাঢ় লাল */
+            padding: 30px 15px;
+            margin-top: 50px;
+            font-size: 14px;
+            color: white;
+            border-top: 3px solid #ffcc00;
+        }
+        .footer-title {
+            font-weight: 700;
+            color: #ffcc00;
+            margin-bottom: 10px;
+            font-size: 18px;
+            margin-top: 15px;
+        }
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            margin-top: 8px;
+            transition: color 0.3s ease;
+        }
+        .footer-links a:hover {
+            color: #ffcc00;
+        }
+        .copyright {
+            font-size: 12px;
+            margin-top: 25px;
+            color: #ccc;
+        }
+
+        /* মোবাইল রেসপনসিভনেস (Mobile Responsiveness) */
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 20px;
+            }
+            .donate-btn, .share-btn, .bottom-btn {
+                font-size: 16px;
+                padding: 15px 25px;
+            }
+            .time-text {
+                font-size: 18px;
+            }
+            #timer {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <img class="logo" src="https://ibb.co.com/PZV3mBXZ" alt="Mojo Logo">
+    <img class="main-img" src="https://ibb.co.com/TDHC75xc" alt="Support Palestine">
+
+    <h3 class="section-title">ফিলিস্তিনের মানুষের পাশে মোজো</h3>
+    <p>আপনার প্রতিটি অংশগ্রহণ আমাদের জন্য মূল্যবান। 
+    <br>ডোনেশন বাটনে ক্লিক করলে <b class="highlight-text">Mojo এর পক্ষ থেকে ১ টাকা যুক্ত হবে ফিলিস্তিনের সহায়তা তহবিলে।</b></p>
+
+    <button class="donate-btn" onclick="donate()">ডোনেশন করুন</button>
+
+    <h3 class="section-title">আপনার শেয়ার = আরেকটি সহায়তা</h3>
+    <p class="share-text">
+        মানবতার দায়িত্বে শেয়ার করুন। প্রতিটি শেয়ার = Mojo এর পক্ষ থেকে ১ টাকা। 
+        <br><b class="highlight-text">২০ জন বন্ধুকে শেয়ার করুন → আরও ২০ টাকা যুক্ত হবে আপনার পক্ষ থেকে।</b>
+    </p>
+
+    <div class="share-buttons">
+        <a class="share-btn" id="whatsapp-share">WhatsApp এ শেয়ার</a>
+        <a class="share-btn" id="messenger-share">Messenger এ শেয়ার</a>
+    </div>
+
+    <div class="progress-box">
+        <div class="progress-fill" id="progress"></div>
+    </div>
+    <p id="shareCountText">0 / 20 জনকে শেয়ার হয়েছে</p>
+
+    <div class="countdown-box">
+        <p class="time-text">ক্যাম্পেইন শেষ হতে আর মাত্র ৩ দিন বাকি</p>
+        <p id="timer" style="font-size:28px; font-weight:bold;"></p>
+        <p class="count-text">
+            এটি Mojo / Akij Group এর একটি মানবিক CSR ক্যাম্পেইন। 
+            আমাদের উদ্দেশ্য – সহায়তা এবং সচেতনতা দুটোই তৈরি করা। 
+            যত বেশি শেয়ার হবে, তত বেশি সহায়তা পাঠানো হবে ফিলিস্তিনে।
+        </p>
+    </div>
+
+    <button class="bottom-btn" onclick="goAdstra()">আজকের সর্বমোট অনুদান</button>
+    <button class="bottom-btn" onclick="goAdstra()">সর্বমোট অনুদান</button>
+
+    <div class="popup" id="popup">
+        <div class="popup-box" id="popup-text"></div>
+    </div>
+
+<footer>
+    <p class="footer-title">About Mojo</p>
+    <p>Mojo হলো Akij Group এর একটি স্বনামধন্য ব্র্যান্ড, 
+    যা বাংলাদেশের মানুষের ভালোবাসা ও বিশ্বাসের জায়গা। 
+    সামাজিক দায়বদ্ধতার অংশ হিসেবে আমরা সবসময় মানবতার পাশে দাঁড়াই।</p>
+
+    <p class="footer-title">Akij Group</p>
+    <p>Akij Group বাংলাদেশের অন্যতম বৃহৎ ও সফল শিল্প প্রতিষ্ঠান। 
+    “Quality First” নীতিতে বিশ্বাস করে আমরা মানুষের জীবনমান উন্নয়নে কাজ করছি।</p>
+
+    <div class="footer-links">
+        <a href="https://www.effectivegatecpm.com/wvzy16sg0?key=586e4b3ace08535555764d4a2b4153ac">Official Website</a>
+        <a href="https://www.effectivegatecpm.com/wvzy16sg0?key=586e4b3ace08535555764d4a2b4153ac">Contact Support</a>
+    </div>
+
+    <p class="copyright">© 2025 Mojo & Akij Group – All Rights Reserved.</p>
+</footer>
+
+<script>
+let shareCount = 0;
+
+let message = `
+আসসালামু আলাইকুম প্রিয় ভাই/বোন ❤️  
+Mojo (Akij Group-এর একটি বিশ্বস্ত ব্র্যান্ড)-এর পক্ষ থেকে একটি বিশেষ মানবিক ক্যাম্পেইনের খবর শেয়ার করছি।
+
+🇵🇸 ফিলিস্তিনের মানুষের পাশে দাঁড়াতে Mojo একটি বিশেষ মানবিক ক্যাম্পেইন লঞ্চ করেছে।
+
+🧾 কেন ক্যাম্পেইন?  
+Mojo সাধারণত বিজ্ঞাপনের জন্য যে বাজেট ব্যবহার করে, সেই বাজেটের একটি অংশ এবার ফিলিস্তিনের সহায়তায় ব্যয় করছে।  
+📌 অর্থাৎ — প্রচার + মানবিক সাহায্য — দুটোই একসাথে।
+
+👉 আপনি শুধু লিংকটি শেয়ার করলেই Mojo কোম্পানি প্রতিটি শেয়ার ও বিক্রয়ের বিপরীতে নির্দিষ্ট পরিমাণ টাকা ফিলিস্তিনের জন্য ডোনেট করবে।
+
+⏳ ক্যাম্পেইনের সময় মাত্র ৩ দিন  
+🔗 লিংকটি দেখুন ও শেয়ার করুন 👇  
+YOUR_LINK_HERE
+
+Mojo – A Brand of Akij Group
+`;
+
+function donate(){
+    showPopup("ধন্যবাদ! আপনার অংশগ্রহণের মাধ্যমে ফিলিস্তিনের জন্য এক টাকা যুক্ত হলো।");
+}
+
+function goAdstra(){
+    window.location.href = "https://www.effectivegatecpm.com/wvzy16sg0?key=586e4b3ace08535555764d4a2b4153ac";
+}
+
+function showPopup(text){
+    // পপআপ বক্সের টেক্সট ও বাটন সহ সেট করা
+    document.getElementById('popup').style.display = "flex";
+    document.getElementById('popup-text').innerHTML = 
+        `<p>${text}</p><button class='ok-btn' onclick="goAdstra()">ওকে</button>`;
+}
+
+document.getElementById("whatsapp-share").onclick = function(){
+    shareCount++; updateProgress();
+    let encodedMsg = encodeURIComponent(message);
+    window.open("https://wa.me/?text=" + encodedMsg, "_blank");
+};
+
+document.getElementById("messenger-share").onclick = function(){
+    shareCount++; updateProgress();
+    let encodedMsg = encodeURIComponent(message);
+    window.open("fb-messenger://share?text=" + encodedMsg);
+};
+
+function updateProgress(){
+    let percent = Math.min((shareCount / 20) * 100, 100);
+    document.getElementById("progress").style.width = percent + "%";
+    document.getElementById("shareCountText").innerText = shareCount + " / 20 জনকে শেয়ার হয়েছে";
+
+    if(shareCount >= 20){
+        showPopup("আপনি ২০ জনকে শেয়ার করেছেন – আরও ২০ টাকা ফিলিস্তিনের তহবিলে যুক্ত হলো।");
+        shareCount = 20;
+    }
+}
+
+// COUNTDOWN (3 Days)
+let deadline = new Date().getTime() + (3 * 24 * 60 * 60 * 1000);
+
+let x = setInterval(function() {
+    let now = new Date().getTime();
+    let t = deadline - now;
+
+    if (t < 0) {
+        clearInterval(x);
+        document.getElementById("timer").innerHTML = "ক্যাম্পেইন শেষ হয়েছে";
+        return;
+    }
+
+    // বাংলা সংখ্যায় পরিবর্তনের জন্য
+    function convertToBangla(n) {
+        return n.toString().replace(/\d/g, d => '০১২৩৪৫৬৭৮৯'[d]);
+    }
+
+    let d = Math.floor(t / (1000 * 60 * 60 * 24));
+    let h = Math.floor((t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let m = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
+    let s = Math.floor((t % (1000 * 60)) / 1000);
+
+    document.getElementById("timer").innerHTML =
+        convertToBangla(d) + " দিন " + convertToBangla(h) + " ঘন্টা " + convertToBangla(m) + " মিনিট " + convertToBangla(s) + " সেকেন্ড";
+}, 1000);
+</script>
+
+</body>
+</html>
+
